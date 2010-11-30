@@ -1,0 +1,26 @@
+# Loader
+id: loader
+parameters:
+   locale: pt_BR
+   basePath: .
+   firstView: main
+   
+views: # Loader's child views
+    # Main
+    - id: main
+      class: simpleSite.views.Main
+      localeFile: "%(localePath)s/copydeck.yaml" # This locale file is loaded here, all views loaded after main will have it available to them
+      dependencies:
+          - url: "%(basePath)s/main.swf"      
+      views:
+          # About
+          - id: about
+            class: simpleSite.views.About
+            dependencies:
+                - url: "%(basePath)s/about.swf"
+          # Contact
+          - id: contact
+            class: simpleSite.views.Contact
+            dependencies:
+                - url: "%(basePath)s/contact.swf"
+        

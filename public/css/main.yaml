@@ -1,0 +1,29 @@
+# Loader
+id: loader
+parameters:
+   locale: pt_BR
+   basePath: ../
+   firstView: Main
+   
+views: # Loader's child views
+    # Main
+    - id: main
+      class: example.views.Main
+      localeFile: "%(localePath)s/copydeck.yaml" # This locale file is loaded here, all views loaded after main will have it available to them
+      dependencies:
+          - url: "%(basePath)s/main.swf"
+          - id: logo # Free logo downloaded at: http://www.logoinstant.com/2009/01/blaqq-cat/
+            url: "%(localePath)s/logo.jpg"
+      views:
+          # About
+          - id: about
+            class: simpleSite.views.About
+            dependencies:
+                - url: "%(basePath)s/about.swf"
+
+                # Contact
+          - id: contact
+            class: simpleSite.views.Contact
+            dependencies:
+                -url: "%(basePath)s/contact.swf"
+        
