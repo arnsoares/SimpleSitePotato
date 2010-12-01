@@ -2,6 +2,7 @@ package simpleSite.views
 {
 	import potato.modules.navigation.View;
 	import flash.utils.setTimeout;
+	import simpleSite.assets.Menu;
 
 	/**
 	 * Application entry point for SimpleSite.
@@ -14,6 +15,8 @@ package simpleSite.views
 	 */
 	public class Main extends View
 	{
+		protected var _menu:Menu;
+		
 		/**
 		 * @constructor
 		 */
@@ -24,13 +27,14 @@ package simpleSite.views
 		
 		override public function init():void
 		{
-			trace("Main::init() --- ARN");
 			super.init();
 		}
 		
 		override public function show():void
 		{
-			trace("Main::show()");
+			_menu = new Menu();
+			addChild(_menu);
+			
 			setTimeout(super.show, 2000);
 		}
 		
