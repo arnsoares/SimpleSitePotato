@@ -46,6 +46,8 @@ package simpleSite.assets
 		public function handleBt(e:MouseEvent):void
 		{
 			//var bt:GenericButton = e.target;
+			var ind:Number = e.target.ind;
+			var view:String = menuArray[ind].view;
 			
 			switch(e.type)
 			{
@@ -59,7 +61,7 @@ package simpleSite.assets
 				
 				case MouseEvent.CLICK:
 				trace(e.target.ind);
-				Loader.showLoaderFor(_messenger.changeView(menuArray[e.target.ind].view));
+				Loader.showLoaderFor(_messenger.changeView(view));
 			}
 		}
 	}

@@ -24,8 +24,6 @@ package simpleSite.views
 		
 		override public function show():void
 		{
-			super.show();
-			
 			fs = new FieldSection();
 			fs.field.text = "View - Contact";
 			fs.field.autoSize = TextFieldAutoSize.LEFT;
@@ -35,6 +33,8 @@ package simpleSite.views
 			addChild(fs);
 			
 			TweenMax.to(fs, .5, {alpha:1});
+			
+			super.show();
 		}
 		
 		override public function hide():void
