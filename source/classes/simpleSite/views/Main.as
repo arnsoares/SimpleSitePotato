@@ -1,8 +1,8 @@
 package simpleSite.views
 {
 	import potato.modules.navigation.View;
-	import flash.utils.setTimeout;
 	import simpleSite.assets.Menu;
+	import com.greensock.TweenMax;
 
 	/**
 	 * Application entry point for SimpleSite.
@@ -32,10 +32,11 @@ package simpleSite.views
 		
 		override public function show():void
 		{
-			_menu = new Menu();
+			_menu = new Menu(msg("main"));
 			addChild(_menu);
 			
-			setTimeout(super.show, 2000);
+			TweenMax.delayedCall(2, super.show);
+			addView("about");
 		}
 		
 		override public function dispose():void

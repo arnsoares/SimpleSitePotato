@@ -5,14 +5,18 @@ package simpleSite.assets
 	import flash.events.MouseEvent;
 	import simpleSite.views.Main;
 	import simpleSite.assets.GenericButton;
-	
+	import potato.modules.navigation.ViewMessenger;
+	import simpleSite.views.Loader;
+		
 	public class Menu extends AMenuAsset
 	{
 		public var menuArray:Array;
+		protected var _messenger:ViewMessenger;
 	
-		public function Menu()
+		public function Menu(mainMessenger:ViewMessenger)
 		{
 			super();
+			_messenger = mainMessenger;
 			
 			init();
 		}
@@ -55,7 +59,7 @@ package simpleSite.assets
 				
 				case MouseEvent.CLICK:
 				trace(e.target.ind);
-				//Main.msg("main").changeView(menuArray[e.target.ind].view);
+				Loader.showLoaderFor(_messenger.changeView(menuArray[e.target.ind].view));
 			}
 		}
 	}

@@ -1,7 +1,8 @@
 ---
 default:
     - debug: true
-      open: public/index-debug.html
+      #open: public/index-debug.html
+      open: http://localhost:8000/
       extras: -use-network=false -static-link-runtime-shared-libraries -default-frame-rate=60
     
 library-path:

@@ -6,29 +6,34 @@ package simpleSite.views
 	import flash.events.Event;
 	import com.greensock.TweenMax;
 	import simpleSite.views.Main;
+	import simpleSite.assets.LoaderView;
 
+	[SWF(width='550', height='400', backgroundColor='#FFFFFF', frameRate='60')]
 	public class Loader extends YAMLSiteView
 	{
-	
+		public static var loaderView:LoaderView;
+		
 		public function Loader()
 		{
 			super();
-			trace("Loader::Loader()");
 		}
 		
 		override public function init():void
 		{
 			super.init();
 			
+			loaderView = new LoaderView();
+			loaderView.y = 42;
+			addChild(loaderView);
+			
 			var vl:ViewLoader = loaderFor("main");
 			vl.addEventListener(Event.COMPLETE, onLoadComplete);
-			vl.addEventListener(ProgressEvent.PROGRESS, onProgressLoader);
 			vl.start();
 		}
 		
-		public function onProgressLoader(e:ProgressEvent):void
+		public static function showLoaderFor(vl:ViewLoader):void
 		{
-			trace(e.bytesLoaded / e.bytesTotal);
+			loaderView.show(vl);
 		}
 		
 		public function onLoadComplete(e:Event):void
