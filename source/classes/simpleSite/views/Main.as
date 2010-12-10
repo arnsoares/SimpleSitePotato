@@ -3,6 +3,7 @@ package simpleSite.views
 	import potato.modules.navigation.View;
 	import simpleSite.assets.Menu;
 	import com.greensock.TweenMax;
+	import simpleSite.views.Loader;
 
 	/**
 	 * Application entry point for SimpleSite.
@@ -39,10 +40,14 @@ package simpleSite.views
 			addView("about");
 		}
 		
+		public function set menuEnabled(value:Boolean):void
+		{
+			_menu.enabled = value;
+		}
+		
 		override public function dispose():void
 		{
 			super.dispose();
 		}
-		
 	}
 }

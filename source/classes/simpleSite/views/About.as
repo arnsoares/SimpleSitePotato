@@ -5,10 +5,11 @@ package simpleSite.views
 	import flash.text.TextFieldAutoSize;
 	import com.greensock.TweenMax;
 	import com.greensock.easing.Quart;
+	import simpleSite.views.Loader;
+	import simpleSite.assets.Menu;
 
 	public class About extends View
 	{
-		
 		public var fs:FieldSection;
 	
 		public function About()
@@ -19,8 +20,6 @@ package simpleSite.views
 		override public function init():void
 		{
 			super.init();
-			
-			trace("About::init()");
 		}
 		
 		override public function show():void
@@ -33,21 +32,25 @@ package simpleSite.views
 			fs.alpha = 0;
 			addChild(fs);
 			
-			TweenMax.to(fs, .5, {alpha:1});
+			var sShow:Function = super.show;
 			
-			super.show();
+			TweenMax.to(fs, .5, {alpha:1, onComplete: function() : void{
+				msg("main").menuEnabled = true;
+				sShow();
+			}});
+
 		}
 		
 		override public function hide():void
 		{
-			TweenMax.to(fs, .5, {y:fs.y + 100, alpha:0, ease:Quart.easeOut, onComplete:super.hide});
+			TweenMax.to(fs, .5, {y:fs.y + 100, alpha:0, ease:Quart.easeOut, onComplete: super.hide});
 		}
 		
 		override public function dispose():void
 		{
 			removeChild(fs);
 		}
-	
+		
 	}
 
 }

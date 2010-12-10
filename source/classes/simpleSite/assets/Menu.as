@@ -60,9 +60,23 @@ package simpleSite.assets
 				break;
 				
 				case MouseEvent.CLICK:
-				trace(e.target.ind);
-				Loader.showLoaderFor(_messenger.changeView(view));
+				
+					var vl:ViewLoader = _messenger.changeView(view);
+					if (vl)
+					{
+						enabled = false;
+
+						Loader.vigentView = view;
+						Loader.showLoaderFor(vl);
+					}
+					
+				break;
 			}
+		}
+		
+		override public function set enabled(value:Boolean):void
+		{
+			mouseChildren = value;
 		}
 	}
 }

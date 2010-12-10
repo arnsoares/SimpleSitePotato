@@ -21,12 +21,18 @@ package simpleSite.assets
 
 		public function show(vl:ViewLoader):void
 		{
-			if(!vl || vl.loaded) return;
+			if(!vl || vl.loaded) {
+				//menuEnabled
+				return;
+			}
 			
 			visible = true;
 			bar.scaleX = 0;
+			
+			vl.addEventListener(ProgressEvent.PROGRESS, handleProgress);
+			vl.addEventListener(Event.COMPLETE, handleComplete);
 		}
-
+		
 		public function hide():void
 		{
 			visible = false;
@@ -35,10 +41,10 @@ package simpleSite.assets
 		
 		public function handleComplete(e:Event):void
 		{
-			e.target.addEventListener(ProgressEvent.PROGRESS, handleProgress);
-			e.target.addEventListener(Event.COMPLETE, handleComplete);
+			trace("LoaderView::handleComplete()");
+			e.target.removeEventListener(ProgressEvent.PROGRESS, handleProgress);
+			e.target.removeEventListener(Event.COMPLETE, handleComplete);
 		}
-		
 		
 		public function handleProgress(e:ProgressEvent):void
 		{

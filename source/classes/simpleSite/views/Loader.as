@@ -12,6 +12,7 @@ package simpleSite.views
 	public class Loader extends YAMLSiteView
 	{
 		public static var loaderView:LoaderView;
+		public static var vigentView:String;
 		
 		public function Loader()
 		{
@@ -38,7 +39,6 @@ package simpleSite.views
 		
 		public function onLoadComplete(e:Event):void
 		{
-			trace("Loader::onLoadComplete()  ---  "+ e);
 			var id:String = e.target.view.id; 
 			changeView(id);
 		}
